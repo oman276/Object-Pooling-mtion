@@ -257,7 +257,7 @@ namespace Unity.FPS.Gameplay
             }
 
             // Self Destruct
-            Destroy(this.gameObject);
+            Destroy(this.gameObject); //Stop Object from being destroyed, just deactivate it
         }
 
         void OnDrawGizmosSelected()

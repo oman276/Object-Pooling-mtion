@@ -447,8 +447,9 @@ namespace Unity.FPS.Game
             for (int i = 0; i < bulletsPerShotFinal; i++)
             {
                 Vector3 shotDirection = GetShotDirectionWithinSpread(WeaponMuzzle);
+                Debug.Log("Pew!");
                 ProjectileBase newProjectile = Instantiate(ProjectilePrefab, WeaponMuzzle.position,
-                    Quaternion.LookRotation(shotDirection));
+                    Quaternion.LookRotation(shotDirection)); // LINE THAT FIRES GUN
                 newProjectile.Shoot(this);
             }
 
