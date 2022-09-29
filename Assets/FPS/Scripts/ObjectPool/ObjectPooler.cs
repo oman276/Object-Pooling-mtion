@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * This object pooler script contains all data necessary for object pooling,
+ * This object pooler script contains all code necessary for object pooling,
  * the process of collecting a bunch of similar objects together into a pool
- * from which they can be called as necessary, without expensive 
+ * from which they can be pulled as necessary, without expensive 
  * Instantiate() calls.
  * 
  * This implementation also allows the caller to specify if the object should be 
@@ -24,7 +24,7 @@ public class ObjectPooler : MonoBehaviour
     public class PoolData
     {
         //Name of pool
-        [Tooltip("The name of the pool, to be used when this pool is called via ObjectPooler.InstantiateFromPool")]
+        [Tooltip("The name of the pool, to be used when this pool is called via ObjectPooler.InstantiateFromPool()")]
         public string name;
         //GameObject to spawn
         [Tooltip("The GameObject to be pooled. Ensure it does not destroy itself!")]
