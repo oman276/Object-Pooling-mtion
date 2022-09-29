@@ -74,11 +74,16 @@ namespace Unity.FPS.Gameplay
 
             m_ProjectileBase.OnShoot += OnShoot;
 
-            Destroy(gameObject, MaxLifeTime);
+            // Moved to OnShoot(): Would destroy the deactivated bullets before they had a chance to be spawned
+            //Destroy(gameObject, MaxLifeTime);
         }
 
         new void OnShoot()
         {
+            //Temporary - will need to create a method within the object pooler to optionally set 
+            //  a timer to automatically have the obj disabled and sent to back of queue
+            Destroy(gameObject, MaxLifeTime);
+
             m_ShootTime = Time.time;
             m_LastRootPosition = Root.position;
             m_Velocity = transform.forward * Speed;
