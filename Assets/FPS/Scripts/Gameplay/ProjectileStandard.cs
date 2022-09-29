@@ -67,6 +67,7 @@ namespace Unity.FPS.Gameplay
 
         const QueryTriggerInteraction k_TriggerInteraction = QueryTriggerInteraction.Collide;
 
+
         void OnEnable()
         {
             m_ProjectileBase = GetComponent<ProjectileBase>();
@@ -75,15 +76,12 @@ namespace Unity.FPS.Gameplay
 
             m_ProjectileBase.OnShoot += OnShoot;
 
-            // Moved to OnShoot(): Would destroy the deactivated bullets before they had a chance to be spawned
+            // Removed: object will now be deactivated instead of destroyed
             //Destroy(gameObject, MaxLifeTime);
         }
 
         new void OnShoot()
         {
-            //Temporary - will need to create a method within the object pooler to optionally set 
-            //  a timer to automatically have the obj disabled and sent to back of queue
-            //Destroy(gameObject, MaxLifeTime);
 
             m_ShootTime = Time.time;
             m_LastRootPosition = Root.position;

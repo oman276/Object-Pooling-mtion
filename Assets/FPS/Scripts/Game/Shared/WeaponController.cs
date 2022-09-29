@@ -162,9 +162,12 @@ namespace Unity.FPS.Game
         const string k_AnimAttackParameter = "Attack";
 
         private Queue<Rigidbody> m_PhysicalAmmoPool;
+        private ObjectPooler pooler;
 
         void Awake()
         {
+            pooler = FindObjectOfType<ObjectPooler>();
+
             m_CurrentAmmo = MaxAmmo;
             m_CarriedPhysicalBullets = HasPhysicalBullets ? ClipSize : 0;
             m_LastMuzzlePosition = WeaponMuzzle.position;
@@ -447,9 +450,11 @@ namespace Unity.FPS.Game
             for (int i = 0; i < bulletsPerShotFinal; i++)
             {
                 Vector3 shotDirection = GetShotDirectionWithinSpread(WeaponMuzzle);
-                //Debug.Log("Pew!");
-                ProjectileBase newProjectile = ObjectPooler.instance.InstantiateFromPool("player_projectile", 
+
+                ProjectileBase newProjectile = pooler.InstantiateFromPool("player_projectile", 
                     WeaponMuzzle.position, Quaternion.LookRotation(shotDirection)).GetComponent<ProjectileBase>();
+                //ProjectileBase newProjectile = Instantiate(ProjectilePrefab, WeaponMuzzle.position,
+                //    Quaternion.LookRotation(shotDirection));
                 newProjectile.Shoot(this);
             }
 
