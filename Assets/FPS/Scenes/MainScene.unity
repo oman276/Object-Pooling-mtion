@@ -778,7 +778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolList:
   - name: player_projectile
-    item: {fileID: 0}
+    item: {fileID: 3659995153115176983, guid: 3c6b27d949cdda749892906e1f1d1b27, type: 3}
     size: 20
     timeToDeactivate: 2
 --- !u!4 &1058203566 stripped

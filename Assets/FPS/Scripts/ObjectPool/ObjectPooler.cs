@@ -54,6 +54,7 @@ public class ObjectPooler : MonoBehaviour
         }
 
         poolDict = new Dictionary<string, Queue<GameObject>>();
+        despawnDict = new Dictionary<string, float>();
         
         //Create all pools based on the data from poolList and add them to poolDict
         foreach (PoolData pool in poolList) {

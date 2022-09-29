@@ -163,8 +163,6 @@ namespace Unity.FPS.Game
 
         private Queue<Rigidbody> m_PhysicalAmmoPool;
 
-        //private ObjectPooler
-
         void Awake()
         {
             m_CurrentAmmo = MaxAmmo;
@@ -450,8 +448,8 @@ namespace Unity.FPS.Game
             {
                 Vector3 shotDirection = GetShotDirectionWithinSpread(WeaponMuzzle);
                 //Debug.Log("Pew!");
-                ProjectileBase newProjectile =  Instantiate(ProjectilePrefab, WeaponMuzzle.position,
-                    Quaternion.LookRotation(shotDirection)); // LINE THAT FIRES GUN
+                ProjectileBase newProjectile = ObjectPooler.instance.InstantiateFromPool("player_projectile", 
+                    WeaponMuzzle.position, Quaternion.LookRotation(shotDirection)).GetComponent<ProjectileBase>();
                 newProjectile.Shoot(this);
             }
 

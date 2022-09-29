@@ -2,6 +2,7 @@
 using Unity.FPS.Game;
 using UnityEngine;
 
+
 namespace Unity.FPS.Gameplay
 {
     public class ProjectileStandard : ProjectileBase
@@ -82,7 +83,7 @@ namespace Unity.FPS.Gameplay
         {
             //Temporary - will need to create a method within the object pooler to optionally set 
             //  a timer to automatically have the obj disabled and sent to back of queue
-            Destroy(gameObject, MaxLifeTime);
+            //Destroy(gameObject, MaxLifeTime);
 
             m_ShootTime = Time.time;
             m_LastRootPosition = Root.position;
@@ -262,7 +263,8 @@ namespace Unity.FPS.Gameplay
             }
 
             // Self Destruct
-            Destroy(this.gameObject); //Stop Object from being destroyed, just deactivate it
+            //Destroy(this.gameObject); //Stop Object from being destroyed, just deactivate it
+            this.gameObject.SetActive(false);
         }
 
         void OnDrawGizmosSelected()
