@@ -87,7 +87,9 @@ namespace Unity.FPS.Gameplay
             m_LastRootPosition = Root.position;
             m_Velocity = transform.forward * Speed;
             m_IgnoredColliders = new List<Collider>();
-            transform.position += m_ProjectileBase.InheritedMuzzleVelocity * Time.deltaTime;
+            //Reducing the inherited muzzle velocity's affect on the transform fixes an issue where the player's
+            //  projectiles would spawn a noticable distance from the gun
+            transform.position += (m_ProjectileBase.InheritedMuzzleVelocity / 5) * Time.deltaTime;
 
             // Ignore colliders of owner
             Collider[] ownerColliders = m_ProjectileBase.Owner.GetComponentsInChildren<Collider>();

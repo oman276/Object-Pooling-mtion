@@ -453,8 +453,6 @@ namespace Unity.FPS.Game
 
                 ProjectileBase newProjectile = pooler.InstantiateFromPool("player_projectile", 
                     WeaponMuzzle.position, Quaternion.LookRotation(shotDirection)).GetComponent<ProjectileBase>();
-                //ProjectileBase newProjectile = Instantiate(ProjectilePrefab, WeaponMuzzle.position,
-                //    Quaternion.LookRotation(shotDirection));
                 newProjectile.Shoot(this);
             }
 
