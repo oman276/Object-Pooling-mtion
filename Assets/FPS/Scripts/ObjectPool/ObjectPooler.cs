@@ -23,14 +23,20 @@ public class ObjectPooler : MonoBehaviour
     [System.Serializable]
     public class PoolData
     {
-        //Name of pool 
+        //Name of pool
+        [Tooltip("The name of the pool, to be used when this pool is called via ObjectPooler.InstantiateFromPool")]
         public string name;
         //GameObject to spawn
+        [Tooltip("The GameObject to be pooled. Ensure it does not destroy itself!")]
         public GameObject item;
         //Size of Pool
+        [Tooltip("The size of the pool. Larger pools take up more rescources, but have less of a chance of an " +
+            "active GameObject being Dequeued")]
         public int size;
         //A float indicating how long until the object deactivates on it's own.
         //NOTE: values >= 0 will indicate that it is not to be deactivated.
+        [Tooltip("If the object is to deactivate after a specified time, insert it here. Values of 0 or lower " +
+            "will set the object to not deactivate")]
         public float timeToDeactivate;
     }
 
